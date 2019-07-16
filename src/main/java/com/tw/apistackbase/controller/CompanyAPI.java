@@ -1,9 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +50,13 @@ public class CompanyAPI {
             companies2.add(companies.get(i));
         }
         return companies2;
+    }
+
+    @PostMapping("/companies")
+    public Company addCompany(@RequestBody Company company){
+        company.setCompanyId(4);
+        companies.add(company);
+        return company;
     }
 
 }
