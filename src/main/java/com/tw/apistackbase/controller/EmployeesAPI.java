@@ -36,4 +36,9 @@ public class EmployeesAPI {
         }
         return employees1;
     }
+
+    @GetMapping(path="/employees", params = {"gender"})
+    public List<Employee> getSomeCompanyByGender(@RequestParam String gender){
+        return employees.stream().filter(x->x.getGender()==gender).collect(Collectors.toList());
+    }
 }
