@@ -22,5 +22,9 @@ public class EmployeesAPI {
         return employees;
     }
 
-    
+    @GetMapping("/employees/{id}")
+    public Employee getEmployee(@PathVariable Long id){
+
+        return employees.stream().filter(x->x.getId()==id).collect(Collectors.toList()).get(0);
+    }
 }
