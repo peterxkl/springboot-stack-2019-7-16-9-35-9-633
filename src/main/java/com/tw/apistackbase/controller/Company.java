@@ -8,6 +8,9 @@ public class Company {
         private long employeesNumber;
         private List<Employee> employees;
 
+    public Company() {
+    }
+
     public Company(long companyId, String companyName, long employeesNumber, List<Employee> employees) {
         this.companyId = companyId;
         this.companyName = companyName;

@@ -27,6 +27,7 @@ public class CompanyTest {
         this.mockMvc.perform(get("/companies")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().json("[\n" +
                         "    {\n" +
+                        "        \"companyId\": 1,\n" +
                         "        \"companyName\": \"ccol\",\n" +
                         "        \"employeesNumber\": 200,\n" +
                         "        \"employees\": [\n" +
@@ -40,6 +41,27 @@ public class CompanyTest {
                         "            {\n" +
                         "                \"id\": 11,\n" +
                         "                \"name\": \"oocl2\",\n" +
+                        "                \"age\": 22,\n" +
+                        "                \"gender\": \"male\",\n" +
+                        "                \"salary\": 6000\n" +
+                        "            }\n" +
+                        "        ]\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "        \"companyId\": 2,\n" +
+                        "        \"companyName\": \"alibaba\",\n" +
+                        "        \"employeesNumber\": 200,\n" +
+                        "        \"employees\": [\n" +
+                        "            {\n" +
+                        "                \"id\": 43,\n" +
+                        "                \"name\": \"alibaba1\",\n" +
+                        "                \"age\": 20,\n" +
+                        "                \"gender\": \"male\",\n" +
+                        "                \"salary\": 6000\n" +
+                        "            },\n" +
+                        "            {\n" +
+                        "                \"id\": 17,\n" +
+                        "                \"name\": \"alibaba2\",\n" +
                         "                \"age\": 22,\n" +
                         "                \"gender\": \"male\",\n" +
                         "                \"salary\": 6000\n" +
@@ -72,5 +94,25 @@ public class CompanyTest {
                         "        }\n" +
                         "    ]\n" +
                         "}"));
+    }
+    @Test
+    public void shouldReturnAllEmployeeOnCompany() throws Exception {
+        this.mockMvc.perform(get("/companies/1/employees")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("[\n" +
+                        "    {\n" +
+                        "        \"id\": 4,\n" +
+                        "        \"name\": \"oocl1\",\n" +
+                        "        \"age\": 20,\n" +
+                        "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "        \"id\": 11,\n" +
+                        "        \"name\": \"oocl2\",\n" +
+                        "        \"age\": 22,\n" +
+                        "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    }\n" +
+                        "]"));
     }
 }
