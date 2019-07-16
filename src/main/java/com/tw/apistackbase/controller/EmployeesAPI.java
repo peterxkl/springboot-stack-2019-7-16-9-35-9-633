@@ -2,6 +2,7 @@ package com.tw.apistackbase.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,5 +27,13 @@ public class EmployeesAPI {
     public Employee getEmployee(@PathVariable Long id){
 
         return employees.stream().filter(x->x.getId()==id).collect(Collectors.toList()).get(0);
+    }
+    @GetMapping(path="/employees", params = {"page","pageSize"})
+    public List<Employee> getSomeCompany(@RequestParam int page,@RequestParam int pageSize){
+        List<Employee> employees1 = new ArrayList<>();
+        for (int i =(page-1)*pageSize ;i<pageSize*page;i++){
+            employees1.add(employees.get(i));
+        }
+        return employees1;
     }
 }
