@@ -48,4 +48,29 @@ public class CompanyTest {
                         "    }\n" +
                         "]"));
     }
+    @Test
+    public void shouldReturn_a_certain_specific_Company() throws Exception {
+        this.mockMvc.perform(get("/companies/1")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\n" +
+                        "    \"companyId\": 1,\n" +
+                        "    \"companyName\": \"ccol\",\n" +
+                        "    \"employeesNumber\": 200,\n" +
+                        "    \"employees\": [\n" +
+                        "        {\n" +
+                        "            \"id\": 4,\n" +
+                        "            \"name\": \"oocl1\",\n" +
+                        "            \"age\": 20,\n" +
+                        "            \"gender\": \"male\",\n" +
+                        "            \"salary\": 6000\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"id\": 11,\n" +
+                        "            \"name\": \"oocl2\",\n" +
+                        "            \"age\": 22,\n" +
+                        "            \"gender\": \"male\",\n" +
+                        "            \"salary\": 6000\n" +
+                        "        }\n" +
+                        "    ]\n" +
+                        "}"));
+    }
 }
