@@ -59,4 +59,11 @@ public class CompanyAPI {
         return company;
     }
 
+    @DeleteMapping("/companies/{id}")
+    public Company deleteCompany(@PathVariable Long id){
+        Company company = companies.stream().filter(x->x.getCompanyId()==id).collect(Collectors.toList()).get(0);
+        company.setEmployees(null);
+        return company;
+    }
+
 }
